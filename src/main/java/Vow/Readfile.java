@@ -1,6 +1,7 @@
 package Vow;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -17,8 +18,9 @@ public class Readfile {
 	String path="C:\\Users\\Admin\\eclipse-workspace\\Testingselenium\\foldsele\\samp.xls";
 	public void read(String Sheet1) throws IOException {
 		FileInputStream f= new FileInputStream(path);
-		
+		FileOutputStream f1= new FileOutputStream (path);
 		HSSFWorkbook workbook = new HSSFWorkbook(f);
+		//HSSFWorkbook workbook1 = new HSSFWorkbook();
 		Sheet sh = workbook.getSheet(Sheet1);
 		int rows=sh.getPhysicalNumberOfRows();
 		for(int i=0;i<rows;i++) {
@@ -29,12 +31,14 @@ public class Readfile {
 				Cell eachCell= eachRow.getCell(j);
 		
 			System.out.print(Celltype(eachCell));
-			//workbook.write();
-//			workbook.close();
-//			f.close();
-//			System.out.println(" done...");
+			
 		}System.out.println(" ");
-		}
+		
+		}workbook.write();
+		workbook.close();
+		f1.close();
+		System.out.println(" done...");
+		System.out.println(f1);
 		
 		
 	}
